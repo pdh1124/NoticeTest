@@ -43,7 +43,7 @@ public class BoardController {
 		int totalCnt = 0;
 		
 		if(pageVo.getPageNo() == 0){
-			pageVo.setPageNo(page);;
+			pageVo.setPageNo(page);
 		}
 		
 		boardList = boardService.SelectBoardList(pageVo);
@@ -63,7 +63,6 @@ public class BoardController {
 		
 		BoardVo boardVo = new BoardVo();
 		
-		
 		boardVo = boardService.selectBoard(boardType,boardNum);
 		
 		model.addAttribute("boardType", boardType);
@@ -82,12 +81,22 @@ public class BoardController {
 	
 	@RequestMapping(value = "/board/boardWriteAction.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String boardWriteAction(Locale locale,BoardVo boardVo) throws Exception{
+	public String boardWriteAction(Locale locale, BoardVo boardVo) throws Exception{
 		
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
 		
-		int resultCnt = boardService.boardInsert(boardVo);
+		int totalCnt = boardService.selectBoardCnt();
+		System.out.println("totalCnt:"  + totalCnt);
+		int resultCnt = 0;	
+
+//		if(totalCnt == 0) {
+//			resultCnt = boardService.boardInsertIfNull(boardVo);
+//		} else {
+//			resultCnt = boardService.boardInsert(boardVo);
+//		}
+		
+		resultCnt = boardService.boardInsert(boardVo);
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
@@ -113,4 +122,43 @@ public class BoardController {
 		return "board/boardModify";
 	}
 	
+	
+	@RequestMapping(value = "/board/boardModifyAction.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String boardModifyAction(Locale locale,BoardVo boardVo) throws Exception{
+		
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		
+		int resultCnt = boardService.boardModify(boardVo);
+		
+		System.out.println("resultCnt::" + resultCnt);
+		
+		result.put("success", (resultCnt > 0)?"Y":"N");
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
+	}
+	
+	
+	@RequestMapping(value = "/board/boardDeleteAction.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String boardDeleteAction(Locale locale,BoardVo boardVo) throws Exception{
+		
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		
+		int resultCnt = boardService.boardDelete(boardVo);
+		
+		System.out.println("resultCnt::" + resultCnt);
+		
+		result.put("success", (resultCnt > 0)?"Y":"N");
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
+	}
 }

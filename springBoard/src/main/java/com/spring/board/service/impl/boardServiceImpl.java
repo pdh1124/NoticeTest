@@ -51,16 +51,23 @@ public class boardServiceImpl implements boardService{
 		return boardDao.boardInsert(boardVo);
 	}
 
+//	@Override
+//	public int boardInsertIfNull(BoardVo boardVo) throws Exception {
+//		// TODO Auto-generated method stub
+//		return boardDao.boardInsertIfNull(boardVo);
+//	}
+	
 	@Override
-	public int boardUpdate(BoardVo boardVo) throws Exception {
+	public int boardModify(BoardVo boardVo) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.boardModify(boardVo);
 	}
 
 	@Override
 	public int boardDelete(BoardVo boardVo) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.boardDelete(boardVo);
 	}
+
 	
 }

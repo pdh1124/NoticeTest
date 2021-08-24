@@ -11,12 +11,13 @@
 
 	$j(document).ready(function(){
 		
+
 		$j("#modify").on("click",function(){
-			var $frm = $j('.boardWrite :input');
+			var $frm = $j('.boardModify :input');
 			var param = $frm.serialize();
 			
 			$j.ajax({
-			    url : "/board/boardUpdateAction.do",
+			    url : "/board/boardModifyAction.do",
 			    dataType: "json",
 			    type: "POST",
 			    data : param,
@@ -26,7 +27,7 @@
 					
 					alert("메세지:"+data.success);
 					
-					location.href = "/board/boardList.do?pageNo=";
+					location.href = "/board/boardList.do";
 			    },
 			    error: function (jqXHR, textStatus, errorThrown)
 			    {
@@ -36,40 +37,19 @@
 		});
 		
 		
-		$j("#delete").on("click",function(){
-			var $frm = $j('.boardWrite :input');
-			var param = $frm.serialize();
-			
-			$j.ajax({
-			    url : "/board/boardUpdateAction.do",
-			    dataType: "json",
-			    type: "POST",
-			    data : param,
-			    success: function(data, textStatus, jqXHR)
-			    {
-					alert("작성완료");
-					
-					alert("메세지:"+data.success);
-					
-					location.href = "/board/boardList.do?pageNo=";
-			    },
-			    error: function (jqXHR, textStatus, errorThrown)
-			    {
-			    	alert("실패");
-			    }
-			});
-		});
+		
 	});
 	
 
 </script>
 <body>
-<form class="boardWrite">
+<form class="boardModify">
+	<input id="boardType" name="boardType" type="hidden" value="${board.boardType}" />
+	<input name="boardNum" type="hidden" value="${board.boardNum}" />
 	<table align="center">
 		<tr>
 			<td align="right">
 				<input id="modify" type="button" value="수정">
-				<input id="delete" type="button" value="삭제">
 			</td>
 		</tr>
 		<tr>

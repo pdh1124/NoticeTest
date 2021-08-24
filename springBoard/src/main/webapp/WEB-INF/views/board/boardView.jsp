@@ -12,11 +12,22 @@
 	$j(document).ready(function(){
 		
 		$j("#modify").on("click",function(){
-			var $frm = $j('.center :input');
-			var param = $frm.serialize();
+			var boardType = $j('#boardType').val();
+			var boardNum = $j('#boardNum').val();
 			
+			console.log("boardType:" + boardType);
+			console.log("boardNum" + boardNum);
+			
+			location.href = "/board/" + boardType +  "/" + boardNum + "/boardModify.do";
+			
+		});
+		
+		$j("#delete").on("click",function(){
+			var $frm = $j('input[type=hidden]');			
+			var param = $frm.serialize();
+		
 			$j.ajax({
-			    url : "/board/boardWriteAction.do",
+			    url : "/board/boardDeleteAction.do",
 			    dataType: "json",
 			    type: "POST",
 			    data : param,
@@ -26,7 +37,7 @@
 					
 					alert("메세지:"+data.success);
 					
-					location.href = "/board/boardList.do?pageNo=";
+					location.href = "/board/boardList.do";
 			    },
 			    error: function (jqXHR, textStatus, errorThrown)
 			    {
@@ -39,46 +50,51 @@
 
 </script>
 <body>
-<table align="center">
-	<tr>
-		<td align="right">
-			<a href="/board/${board.boardType}/${board.boardNum}/boardModify.do">수정하기</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<table border ="1">
-				<tr>
-					<td width="120" align="center">
-					Title
-					</td>
-					<td width="400">
-					${board.boardTitle}
-					</td>
-				</tr>
-				<tr>
-					<td height="300" align="center">
-					Comment
-					</td>
-					<td>
-					${board.boardComment}
-					</td>
-				</tr>
-				<tr>
-					<td align="center">
-					Writer
-					</td>
-					<td>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td align="right">
-			<a href="/board/boardList.do">List</a>
-		</td>
-	</tr>
-</table>	
+<form class="boardView">
+	<input id="boardType" name="boardType" type="hidden" value="${board.boardType}" />
+	<input id="boardNum" name="boardNum" type="hidden" value="${board.boardNum}" />
+	<table align="center">
+		<tr>
+			<td align="right">
+				<input id="modify" type="button" value="수정">
+				<input id="delete" type="button" value="삭제">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table border ="1">
+					<tr>
+						<td width="120" align="center">
+						Title
+						</td>
+						<td width="400">
+						${board.boardTitle}
+						</td>
+					</tr>
+					<tr>
+						<td height="300" align="center">
+						Comment
+						</td>
+						<td>
+						${board.boardComment}
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+						Writer
+						</td>
+						<td>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">
+				<a href="/board/boardList.do">List</a>
+			</td>
+		</tr>
+	</table>	
+</form>
 </body>
 </html>
