@@ -1,12 +1,11 @@
 package com.spring.board.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.board.HomeController;
 import com.spring.board.service.boardService;
@@ -83,20 +81,14 @@ public class BoardController {
 	@ResponseBody
 	public String boardWriteAction(Locale locale, BoardVo boardVo) throws Exception{
 		
+		//String json = paramList.get("list").toString();
+		//System.out.println(json);
+		
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
 		
-		int totalCnt = boardService.selectBoardCnt();
-		System.out.println("totalCnt:"  + totalCnt);
-		int resultCnt = 0;	
-
-//		if(totalCnt == 0) {
-//			resultCnt = boardService.boardInsertIfNull(boardVo);
-//		} else {
-//			resultCnt = boardService.boardInsert(boardVo);
-//		}
-		
-		resultCnt = boardService.boardInsert(boardVo);
+		int resultCnt = boardService.boardInsert(boardVo);	
+		System.out.println(resultCnt);
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);

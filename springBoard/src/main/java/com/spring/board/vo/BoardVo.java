@@ -1,5 +1,7 @@
 package com.spring.board.vo;
 
+import java.util.List;
+
 public class BoardVo {
 	
 	private String 	boardType;
@@ -10,10 +12,13 @@ public class BoardVo {
 	private String	modifier;
 	private int totalCnt;
 	
+	private List<BoardVo> ListBoard;
+	
 	
 	public int getTotalCnt() {
 		return totalCnt;
 	}
+
 	public void setTotalCnt(int totalCnt) {
 		this.totalCnt = totalCnt;
 	}
@@ -53,6 +58,14 @@ public class BoardVo {
 	public void setModifier(String modifier) {
 		this.modifier = modifier;
 	}
+	public List<BoardVo> getListBoard() {
+		return ListBoard;
+	}
+	public void setListBoard(List<BoardVo> listBoard) {
+		ListBoard = listBoard;
+	}
+	
+
 	
 	
 }
