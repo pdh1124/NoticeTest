@@ -12,6 +12,9 @@ public class BoardVo {
 	private String	modifier;
 	private int totalCnt;
 	
+	private String[] boardTitleList;
+	private String[] boardCommentList;
+	
 	private List<BoardVo> ListBoard;
 	
 	
@@ -57,6 +60,21 @@ public class BoardVo {
 	}
 	public void setModifier(String modifier) {
 		this.modifier = modifier;
+	}
+	public String[] getBoardTitleList() {
+		return boardTitleList;
+	}
+
+	public void setBoardTitleList(String[] boardTitleList) {
+		this.boardTitleList = boardTitleList;
+	}
+
+	public String[] getBoardCommentList() {
+		return boardCommentList;
+	}
+
+	public void setBoardCommentList(String[] boardCommentList) {
+		this.boardCommentList = boardCommentList;
 	}
 	public List<BoardVo> getListBoard() {
 		return ListBoard;
