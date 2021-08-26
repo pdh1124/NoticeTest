@@ -54,12 +54,10 @@ public class boardServiceImpl implements boardService{
 		
 		//횟수
 		int result = 1;
-		
-		for(int i=0; i<boardVo.getListBoard().size();i++) { //배열 수 만큼
-			
-				successCnt[i] = boardDao.boardInsert(boardVo.getListBoard().get(i)); //n번째 데이터로 insert
-				result *= successCnt[i]; // 1* 배열 수
-	
+			for(int i=0; i<boardVo.getListBoard().size();i++) { //배열 수 만큼
+				
+					successCnt[i] = boardDao.boardInsert(boardVo.getListBoard().get(i)); //n번째 데이터로 insert
+					result *= successCnt[i]; // 1* 배열 수
 		}
 		
 		return result; //총 배열 수

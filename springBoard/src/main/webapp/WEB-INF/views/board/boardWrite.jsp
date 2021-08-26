@@ -10,44 +10,14 @@
 </head>
 <script type="text/javascript">
 
-
-	var clicks = 0;
-	var cellCnt = 0;
-	function add_cell() {
+	var clicks = 0; //각 번호
+	var cellCnt = 0; //셀 갯수(title,comment) 2씩 증감
+	var delBtCnt = 0;
 	
-		clicks += 1;
-		cellCnt += 2;
-		
-		var table = document.getElementById('cell_create');
-		
-		var str1 = '<tr>';
-		str1 += '<td width="120" align="center">';
-		str1 += clicks+'.Title';
-		str1 += '</td>';
-		str1 += '<td width="400">';
-		str1 += '<input name="ListBoard['+clicks+'].boardTitle" type="text" size="50" value="${board.boardTitle}"> ';
-		str1 += '</td>';
-		str1 += '</tr>';
-		table.insertRow(cellCnt).innerHTML = str1;
-		
-		
-		var str2 = '<tr>';
-		str2 += '<td height="300" align="center">';
-		str2 += clicks+'.Comment<input type="button" onclick="del_cell(this)" value="행 삭제">';
-		str2 += '</td>';
-		str2 += '<td valign="top">';
-		str2 += '<textarea name="ListBoard['+clicks+'].boardComment" rows="20" cols="55">${board.boardComment}</textarea>';
-		str2 += '</td>';
-		str2 += '</tr>';
-		table.insertRow(cellCnt+1).innerHTML = str2;
-		
-		alert("clicks: "+ clicks + ", cellCnt :" + cellCnt);
-		
-	}
-	
+	//행 삭제
 	function del_cell(obj) {
 		
-		if(clicks < 1) {
+		if(clicks <= 1) {
 			alert("더이상 삭제 할 수 없습니다.");
 			return false;
 		}
@@ -61,29 +31,90 @@
 		
 		clicks -= 1;
 		cellCnt -= 2;
+			
+		delBtCnt = $j(obj).data('num');	
+		
+		cnt_change();
+			
+		console.log("delBtCnt : " + delBtCnt);
+		
+		
+		alert("clicks: "+ clicks + ", cellCnt :" + cellCnt);		
+	}
+	
+	//삭제시 번호 초기화
+	function cnt_change() {
+		
+		var ints = 0;	
+		var table = document.getElementById('cell_create'); //테이블	
+		clicks = 0;	
+			
+		for(var i = 0; i < table.rows.length-1; i+=2) {
+						
+			if(ints < delBtCnt) {
+				var textTitle = $j("#title_text_"+ints).val();
+				var textComment = $j("#comment_text_"+ints).val();
+				ints += 1;
+			}
+			else {
+				ints += 1;
+				var textTitle = $j("#title_text_"+ints).val();
+				var textComment = $j("#comment_text_"+ints).val();
+			}
+					
+			console.log(textTitle);
+			console.log(textComment);
+			
+			var boardNum = '<input name="ListBoard['+clicks+'].boardTitle" id="title_text_'+clicks+'" type="text" size="50" value="' + textTitle + '">'; //타이틀 배열 번호
+			var delBnt = 'Comment<input type="button" onclick="del_cell(this)" data-num="'+clicks+'" value="행 삭제">';
+			var boardComment = '<textarea name="ListBoard['+clicks+'].boardComment"  id="comment_text_'+clicks+'" rows="20" cols="55">' + textComment + '</textarea>';//내용 배열 번호
+			
+		
+			table.rows[i].cells[1].innerHTML = boardNum;
+			table.rows[i+1].cells[0].innerHTML = delBnt;
+			table.rows[i+1].cells[1].innerHTML = boardComment;
+			clicks++;		
+		}
+		
+		clicks = ints;
+		console.log("clicks : " + clicks);
+	}
+	
+	//행 추가
+	function add_cell() {
 		
 		var table = document.getElementById('cell_create');
 		
+		var str1 = '<tr>';
+		str1 += '<td width="120" align="center">';
+		str1 += 'Title';
+		str1 += '</td>';
+		str1 += '<td width="400">';
+		str1 += '<input name="ListBoard['+clicks+'].boardTitle" id="title_text_'+clicks+'" type="text" size="50" value="${board.boardTitle}"> ';
+		str1 += '</td>';
+		str1 += '</tr>';
+		table.insertRow(cellCnt).innerHTML = str1;
+		
+		
+		var str2 = '<tr>';
+		str2 += '<td height="300" align="center">';
+		str2 += 'Comment<input type="button" onclick="del_cell(this)" data-num="'+clicks+'" value="행 삭제">';
+		str2 += '</td>';
+		str2 += '<td valign="top">';
+		str2 += '<textarea name="ListBoard['+clicks+'].boardComment" id="comment_text_'+clicks+'" rows="20" cols="55">${board.boardComment}</textarea>';
+		str2 += '</td>';
+		str2 += '</tr>';
+		table.insertRow(cellCnt+1).innerHTML = str2;
 		
 		alert("clicks: "+ clicks + ", cellCnt :" + cellCnt);
-			
+		
+		clicks += 1;
+		cellCnt += 2;
+		
 	}
+	
+	
 
-	/*
-	function add(){
-		   
-	      $j('<td  width="120" align="center">')
-	     	 .text('title2')
-	      	.appendTo('#title1')
-	      $j('#title1')
-	      .append(
-	    		  $j('<td  width="120" align="center">')
-	    		  .html('   <input name="boardVoList[1].boardTitle" type="text" size="50" value="${board.boardTitle}"> '))
-	      $j('<td height="300" align="center">').text('comment2').appendTo('#comment1')
-	      $j('#comment1').append($j('   <td valign="top">').html('<textarea name="boardVoList[1].boardComment"  rows="20" cols="55"> '))
-	      
-	   }
-	*/
 	
 	/*var clicks = 1;
 	function add_cell() {
@@ -114,6 +145,8 @@
 
 	$j(document).ready(function(){
 		
+		add_cell()
+		
 		//[순서대로 데이터를 받아온다.]
 		$j("#submit").on("click",function(){
 
@@ -122,6 +155,7 @@
 			
 			var param = $frm.serialize();
 			console.log(param);
+			
 			
 			$j.ajax({
 			    url : "/board/boardWriteAction.do",
@@ -161,23 +195,8 @@
 		</tr>
 		<tr>
 			<td>
-				<table id="cell_create" border ="1"> 
-					<tr>
-						<td width="120" align="center">
-						0.Title
-						</td>
-						<td width="400">
-						<input name="ListBoard[0].boardTitle" type="text" size="50" value="${board.boardTitle}"> 
-						</td>
-					</tr>
-					<tr id="cell_insert_row">
-						<td height="300" align="center">
-						0.Comment<input type="button" onclick='del_cell(this)' value="행 삭제">
-						</td>
-						<td valign="top">
-						<textarea name="ListBoard[0].boardComment" rows="20" cols="55">${board.boardComment}</textarea>
-						</td>
-					</tr>
+				<table id="cell_create" border ="1">
+
 					<tr>
 						<td align="center">
 						Writer

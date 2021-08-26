@@ -1,3 +1,6 @@
 
 8월 25, 2021 09:38:56.736 NEW SESSION
 8월 25, 2021 09:38:56.736 [10316:852:0825/093856.733:ERROR:device_event_log_impl.cc(214)] [09:38:56.732] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
+
+8월 26, 2021 11:19:45.213 NEW SESSION
+8월 26, 2021 11:19:45.213 [7652:11848:0826/111945.209:ERROR:device_event_log_impl.cc(214)] [11:19:45.209] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
