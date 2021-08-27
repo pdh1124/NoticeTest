@@ -1,0 +1,20 @@
+package com.spring.board.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.board.dao.UserDao;
+import com.spring.board.service.memberService;
+import com.spring.board.vo.UserVo;
+
+public class userServiceImpl implements memberService {
+
+	@Autowired
+	UserDao userDao; 
+	
+	@Override
+	public int memberJoin(UserVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.userJoin(userVo);
+	}
+
+}

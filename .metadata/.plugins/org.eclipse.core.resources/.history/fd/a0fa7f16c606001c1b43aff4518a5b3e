@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+    
+    <resultMap type="com.spring.board.vo.MemberVo" id="memberVo">
+    	<result property="userId" column="USER_ID"/>
+    	<result property="userPass" column="USER_ID"/>
+    	<result property="userName" column="USER_NAME"/>
+    	<result property="userPhone1" column="USER_PHONE1"/>
+    	<result property="userPhone2" column="USER_PHONE2"/>
+    	<result property="userPhone3" column="USER_PHONE3"/>
+    	<result property="userAddr1" column="USER_ADDR1"/>
+    	<result property="userAddr2" column="USER_ADDR2"/>
+    	<result property="userCompany" column="USER_COMPANY"/>
+    </resultMap>
+    
+    <select id="memberJoin" parameterType="com.spring.board.vo.MemberVo">
+    	<!--foreach collection="list" item="item" index="index" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" -->
+        INSERT INTO 
+	        BOARD
+	        (BOARD_TYPE
+	        ,BOARD_NUM
+	        ,BOARD_TITLE
+	        ,BOARD_COMMENT
+	        ,CREATOR
+	        ,CREATE_TIME
+	        ,MODIFIER
+	        ,MODIFIED_TIME
+	        )
+        VALUES
+	        ('1'
+	        ,(SELECT (TO_NUMBER(NVL(MAX(BOARD_NUM),0)+1))
+		    FROM BOARD
+		    WHERE BOARD_TYPE = '1')
+	        ,#{boardTitle}
+	        ,#{boardComment}
+	        ,'SYSTEM'
+	        ,TO_CHAR(SYSDATE)
+	        ,'SYSTEM'
+	        ,TO_CHAR(SYSDATE)
+	        )
+		<!--/foreach-->
+    </select>
+        
+</mapper>

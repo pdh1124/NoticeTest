@@ -1,0 +1,91 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@include file="/WEB-INF/views/common/common.jsp"%>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>userJoin</title>
+
+</head>
+<script type="text/javascript">
+	$j(document).ready(function(){
+	});
+</script>
+
+
+<body>
+<form class="boardWrite">
+	<table align="center">
+		<tr>
+			<td>
+				<a href="/board/boardList.do">List</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="cell_create" border ="1">
+					<tr>
+						<td width="120" align="center">
+						id
+						</td>
+						<td width="400">
+							<input name="userId" type="text" size="10" value="${user.user}">
+							<input type="button" id="id_check_bt" value="중복확인" /> 
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="center">
+						pw
+						</td>
+						<td width="400">
+							<input name="userPw" type="password" size="20" value="${user.userPw}">
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="center">
+						pw check
+						</td>
+						<td width="400">
+							<input name="userPwcheck" type="password" size="20" value="">
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="center">
+						name
+						</td>
+						<td width="400">
+							<input name="userName" type="text" size="20" value="${user.userName}">
+						</td>
+					</tr>
+					<tr>
+						<td width="120" align="center">
+						phone
+						</td>
+						<td width="400">
+							<select name="userPhone1" size="10" size="5" value="${user.userPhone1}">
+								<option value="1">010</option>
+								<option value="2">011</option>
+								<option value="3">016</option>
+								<option value="4">017</option>
+								<option value="5">019</option>
+							</select>
+							-
+							<input name="userPhone2" type="text" size="10" value="${user.userPhone2}">
+							-
+							<input name="userPhone3" type="text" size="10" value="${user.userPhone3}">
+							
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">
+				<a href="/board/boardList.do">join</a>
+			</td>
+		</tr>
+	</table>
+</form>	
+</body>
+</html>

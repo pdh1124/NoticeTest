@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/views/common/common.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>list</title>
 </head>
 <script type="text/javascript">
-
 	$j(document).ready(function(){
 	});
-
 </script>
 <body>
 <table  align="center">
 	<tr>
-		<td align="right">
-			total : ${totalCnt}
+		<td>
+			<a href="#">login</a> 
+			<a href="/user/userJoin.do">join</a>
+			<div align="right">total : ${totalCnt}</div>
 		</td>
 	</tr>
 	<tr>
@@ -52,7 +52,7 @@
 	</tr>
 	<tr>
 		<td align="right">
-			<a href ="/board/boardWrite.do">±Û¾²±â</a>
+			<a href ="/board/boardWrite.do">ìž‘ì„±í•˜ê¸°</a>
 		</td>
 	</tr>
 </table>	

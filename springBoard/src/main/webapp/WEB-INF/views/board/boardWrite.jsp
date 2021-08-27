@@ -9,7 +9,6 @@
 
 </head>
 <script type="text/javascript">
-
 	var clicks = 0; //각 번호
 	var cellCnt = 0; //셀 갯수(title,comment) 2씩 증감
 	var delBtCnt = 0;
@@ -43,6 +42,8 @@
 	}
 	
 	//삭제시 번호 초기화
+	//1. service딴에서 배열 중 비어있는 배열을 제외하고 받으면 된다.
+	//2. 넘길 때 배열을 다시해서 넘기면 된다.
 	function cnt_change() {
 		
 		var ints = 0;	
@@ -114,7 +115,6 @@
 	}
 	
 	
-
 	
 	/*var clicks = 1;
 	function add_cell() {
@@ -139,17 +139,14 @@
 		newCell2.innerHTML = "<td width='400'><input name='boardTitle[" + clicks + "]' type='text' size='50' value='${board.boardTitle}'></td>";
 		newCell3.innerHTML = "<td class='center' height='300' align='center'>Comment</td>";
 		newCell4.innerHTML = "<td valign='top'><textarea name='boardComment[" + clicks + "]' rows='20' cols='55'>${board.boardComment}</textarea></td>";
-
 		alert(clicks);
 	}*/
-
 	$j(document).ready(function(){
 		
 		add_cell()
 		
 		//[순서대로 데이터를 받아온다.]
 		$j("#submit").on("click",function(){
-
 			var $frm = $j('#cell_create :input');
 			console.log($frm);
 			
@@ -179,8 +176,6 @@
 		});
 	});
 	
-
-
 </script>
 
 

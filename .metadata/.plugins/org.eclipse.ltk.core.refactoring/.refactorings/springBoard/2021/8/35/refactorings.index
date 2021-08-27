@@ -4,3 +4,38 @@
 1629706614595	Delete element
 1629706620834	Copy file
 1629706635534	Rename resource 'boardModift.jsp'
+1630020064259	Move folder
+1630020073154	Rename type 'Member'
+1630020152400	Delete elements
+1630023861602	Rename type 'MemberVo'
+1630023872819	Rename type 'MemberDao'
+1630023883254	Rename type 'MemberDaoImpl'
+1630023904234	Rename compilation unit 'memberServiceImpl.java'
+1630024046441	Rename type 'memberService'
+1630024165941	Rename type 'MemberController'
+1630025150307	Move 3 resources to 'view'
+1630025170012	Move 'root-context.xml' to 'spring'
+1630025175613	Delete element
+1630025185478	Rename resource 'view'
+1630025188658	Move 'home.jsp' to 'views'
+1630025360558	Rename resource 'join.jsp'
+1630025754720	Delete element
+1630027567979	Delete element
+1630027572403	Delete element
+1630029233979	Rename resource 'member_sql.xml'
+1630029687696	Move compilation unit
+1630029702506	Move compilation unit
+1630029720629	Move compilation unit
+1630029733715	Move compilation unit
+1630029747277	Rename package 'com.spring.userservice'
+1630029753898	Move compilation unit
+1630029771872	Move compilation unit
+1630030650838	Move file
+1630030654352	Delete element
+1630030658878	Move compilation unit
+1630030663602	Move compilation unit
+1630030667112	Move compilation unit
+1630030670240	Move compilation unit
+1630030673416	Move compilation unit
+1630030677718	Move compilation unit
+1630030683664	Delete elements

@@ -1,0 +1,18 @@
+package com.spring.board.dao.impl;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.spring.board.dao.MemberDao;
+import com.spring.board.vo.MemberVo;
+
+public class MemberDaoImpl implements MemberDao {
+
+	private SqlSession sqlSession;
+	
+	@Override
+	public int memberJoin(MemberVo memberVo) throws Exception {
+		// TODO Auto-generated method stub
+		return ;
+	}
+
+}

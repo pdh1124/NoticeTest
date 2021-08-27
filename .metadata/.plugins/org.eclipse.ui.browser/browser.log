@@ -4,3 +4,6 @@
 
 8월 26, 2021 11:19:45.213 NEW SESSION
 8월 26, 2021 11:19:45.213 [7652:11848:0826/111945.209:ERROR:device_event_log_impl.cc(214)] [11:19:45.209] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
+
+8월 27, 2021 24:13:14.830 NEW SESSION
+8월 27, 2021 24:13:14.830 [5172:5180:0827/001314.828:ERROR:device_event_log_impl.cc(214)] [00:13:14.828] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)

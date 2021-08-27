@@ -1,0 +1,14 @@
+package com.spring.board.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.spring.board.service.userService;
+
+@Controller
+public class UserController {
+	
+	@Autowired
+	userService userService;
+
+}

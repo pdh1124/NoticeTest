@@ -8,7 +8,6 @@
 <title>boardView</title>
 </head>
 <script type="text/javascript">
-
 	$j(document).ready(function(){
 		
 		$j("#modify").on("click",function(){
@@ -47,7 +46,6 @@
 		});
 	});
 	
-
 </script>
 <body>
 <form class="boardView">

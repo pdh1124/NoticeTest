@@ -8,10 +8,8 @@
 <title>boardWrite</title>
 </head>
 <script type="text/javascript">
-
 	$j(document).ready(function(){
 		
-
 		$j("#modify").on("click",function(){
 			var $frm = $j('.boardModify :input');
 			var param = $frm.serialize();
@@ -40,7 +38,6 @@
 		
 	});
 	
-
 </script>
 <body>
 <form class="boardModify">
