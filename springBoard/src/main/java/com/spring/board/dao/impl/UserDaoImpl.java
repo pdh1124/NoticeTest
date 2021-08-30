@@ -25,4 +25,10 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectOne("user.idCheck", userVo);
 	}
 
+	@Override
+	public int phoneCheck(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("user.phoneCheck", userVo);
+	}
+
 }

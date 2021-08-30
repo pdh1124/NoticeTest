@@ -61,4 +61,14 @@ public class UserController {
 			
 			return result;
 	 }
+	 
+	 
+	 @RequestMapping(value="/user/userPhoneCheak.do", method = RequestMethod.POST)
+	 @ResponseBody
+	 public int phoneCheck(UserVo userVo) throws Exception {
+
+			int result = userService.phoneCheck(userVo);
+			
+			return result;
+	 }
 }

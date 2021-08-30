@@ -7,4 +7,6 @@ public interface UserDao {
 	public int userJoin(UserVo userVo) throws Exception;
 	
 	public int idCheck(UserVo userVo) throws Exception;
+	
+	public int phoneCheck(UserVo userVo) throws Exception;
 }

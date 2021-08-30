@@ -27,4 +27,12 @@ public class userServiceImpl implements userService {
 		return result;
 	}
 
+	@Override
+	public int phoneCheck(UserVo userVo) throws Exception {
+		
+		int result = userDao.phoneCheck(userVo);
+		
+		return result;
+	}
+
 }

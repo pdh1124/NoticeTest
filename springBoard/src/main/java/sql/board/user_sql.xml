@@ -57,4 +57,25 @@
 		WHERE
 			USER_ID = #{userId}
 	</select>
+	
+	<select id="phoneCheck" resultType="int">
+		select 
+			count(*)
+		from (
+		    select 
+		    	*
+		    from (
+		        select 
+		        	*
+		        from 
+		        	USER_INFO
+		        where 
+		        	USER_PHONE1 = #{userPhone1}   
+		    )
+		    where 
+		    	USER_PHONE2 = #{userPhone2}
+		)
+		where 
+			USER_PHONE3 = #{userPhone3}
+	</select>
 </mapper>
