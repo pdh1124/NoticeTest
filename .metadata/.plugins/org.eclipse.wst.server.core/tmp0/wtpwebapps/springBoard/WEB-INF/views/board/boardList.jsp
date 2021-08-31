@@ -15,7 +15,7 @@
 <table  align="center">
 	<tr>
 		<td>
-			<a href="#">login</a> 
+			<a href="/user/userLogin.do">login</a> 
 			<a href="/user/userJoin.do">join</a>
 			<div align="right">total : ${totalCnt}</div>
 		</td>

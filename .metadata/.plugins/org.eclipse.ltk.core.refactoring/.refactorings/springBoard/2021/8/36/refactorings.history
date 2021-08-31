@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;userJoin.jsp&apos; to &apos;userJoin.jsp&apos;&#x0D;&#x0A;- Original project: &apos;springBoard&apos;&#x0D;&#x0A;- Destination element: &apos;userJoin.jsp&apos;&#x0D;&#x0A;- Original element: &apos;userJoin.jsp&apos;" description="Copy file" element1="src/main/webapp/WEB-INF/views/user/userJoin.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1630306598639" target="/springBoard/src/main/webapp/WEB-INF/views/user/userJoin.jsp" units="0" version="1.0"/>
+</session>

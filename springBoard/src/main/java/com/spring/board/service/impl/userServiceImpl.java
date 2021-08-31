@@ -1,5 +1,6 @@
 package com.spring.board.service.impl;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +30,33 @@ public class userServiceImpl implements userService {
 
 	@Override
 	public int phoneCheck(UserVo userVo) throws Exception {
-		
+		// TODO Auto-generated method stub
 		int result = userDao.phoneCheck(userVo);
 		
 		return result;
 	}
+
+	@Override
+	public int idFind(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		int result = userDao.idFind(userVo);
+		
+		return result;
+	}
+
+	@Override
+	public int pwFind(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		int result = userDao.pwFind(userVo);
+		
+		return result;
+	}
+	
+	@Override
+	public UserVo login(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.login(userVo);
+	}
+
 
 }

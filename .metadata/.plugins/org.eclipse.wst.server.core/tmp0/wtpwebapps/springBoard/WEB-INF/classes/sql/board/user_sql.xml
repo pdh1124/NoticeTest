@@ -78,4 +78,41 @@
 		where 
 			USER_PHONE3 = #{userPhone3}
 	</select>
+	
+	
+	<select id="idFind" resultType="int">
+		select
+			count(*)
+		from
+			USER_INFO
+		where
+			USER_ID = #{userId}
+	</select>
+	
+	<select id="pwFind" resultType="int">
+		select
+			count(*)
+		from
+			(
+				select 
+					*
+				from 
+					USER_INFO
+				where
+					USER_ID = #{userId}	
+			)
+		where
+			USER_PW = #{userPw}
+	</select>
+	
+	<select id="login" parameterType="com.spring.board.vo.UserVo" resultMap="userVo">
+		select
+			*
+		from
+			USER_INFO
+		where
+			USER_ID = #{userId}
+	</select>
+	
+
 </mapper>
