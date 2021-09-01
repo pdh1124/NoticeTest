@@ -15,4 +15,6 @@ public interface UserDao {
 	public int pwFind(UserVo userVo) throws Exception;
 	
 	public UserVo login(UserVo userVo) throws Exception;
+	
+	public UserVo userLogin(UserVo userVo) throws Exception;
 }

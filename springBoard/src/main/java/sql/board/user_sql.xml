@@ -114,5 +114,14 @@
 			USER_ID = #{userId}
 	</select>
 	
+	<select id="userLogin" parameterType="com.spring.board.vo.UserVo" resultMap="userVo">
+		select
+			*
+		from
+			USER_INFO
+		where
+			USER_ID = #{userId} and USER_PW = #{userPw}
+	</select>
+	
 
 </mapper>

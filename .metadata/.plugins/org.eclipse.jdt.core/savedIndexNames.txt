@@ -38,9 +38,8 @@ INDEX VERSION 1.131+C:\testBoard\.metadata\.plugins\org.eclipse.jdt.core
 3259984417.index
 3430019437.index
 470283953.index
-3707130569.index
-1389585814.index
 2142722284.index
+1389585814.index
 253937171.index
 3305145654.index
 1733352964.index
@@ -65,7 +64,6 @@ INDEX VERSION 1.131+C:\testBoard\.metadata\.plugins\org.eclipse.jdt.core
 2422040709.index
 364472307.index
 502043587.index
-1393675087.index
 1437707464.index
 3979448253.index
 1847918007.index

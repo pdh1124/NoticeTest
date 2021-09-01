@@ -16,4 +16,6 @@ public interface userService {
 	
 	public UserVo login(UserVo userVo) throws Exception;
 	
+	public UserVo userLogin(UserVo userVo) throws Exception;
+	
 }

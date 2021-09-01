@@ -58,5 +58,11 @@ public class userServiceImpl implements userService {
 		return userDao.login(userVo);
 	}
 
+	@Override
+	public UserVo userLogin(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.userLogin(userVo);
+	}
+
 
 }

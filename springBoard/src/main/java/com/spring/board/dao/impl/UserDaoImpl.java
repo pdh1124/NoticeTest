@@ -46,7 +46,13 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public UserVo login(UserVo userVo) throws Exception {
 		// TODO Auto-generated method stub
-		return (UserVo)sqlSession.selectOne("user.login", userVo);
+		return sqlSession.selectOne("user.login", userVo);
+	}
+
+	@Override
+	public UserVo userLogin(UserVo userVo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("user.userLogin", userVo);
 	}
 
 }

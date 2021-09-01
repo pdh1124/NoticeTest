@@ -5,66 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>userJoin</title>
+<title>userLogin</title>
 
 </head>
 <script type="text/javascript">
-	function idFind() {
-		alert("아이디 작동 여부");
-		var userId = $j("#userId").val();
-		
-		$j.ajax({
-		    url : "/user/userIdFind.do",
-		    dataType: "json",
-		    type: "POST",
-		    data : {
-		    	userId : userId
-		    },    
-		    success: function(data, textStatus, jqXHR)
-		    {
-		    	if(data == 1) {
-		    		pwFind();
-		    	}
-	            else {
-	            	alert('등록되지 않는 아이디 입니다.');
-	            }	
-		    },
-		    error: function (jqXHR, textStatus, errorThrown)
-		    {
-		    	alert("실패");
-		    }
-		});
-	}
-	
-	
-	function pwFind() {
-		alert("비밀번호 작동 여부");
-		var userId = $j("#userId").val();
-		var userPw = $j("#userPw").val();
-		
-		$j.ajax({
-		    url : "/user/userPwFind.do",
-		    dataType: "json",
-		    type: "POST",
-		    data : {
-		    	userId : userId,
-		    	userPw : userPw
-		    },    
-		    success: function(data, textStatus, jqXHR)
-		    {
-		    	alert(data);
-		    	if(data != 1) {
-	                alert("비밀번호가 일치 하지 않습니다.");
-		    	}
-		    },
-		    error: function (jqXHR, textStatus, errorThrown)
-		    {
-		    	alert("실패");
-		    }
-		});
-	}
-
-
 	$j(document).ready(function(){
 		
 		$j("#submit").on("click", function() {
@@ -74,7 +18,7 @@
 			if(userId != "") {
 				if(userPw != "") {
 					$j.ajax({
-					    url : "/user/userLoginAction.do",
+					    url : "/user/loginAction.do",
 					    dataType: "json",
 					    type: "POST",
 					    data : {
@@ -82,14 +26,13 @@
 					    	userPw : userPw
 					    },    
 					    success: function(data, textStatus, jqXHR)
-					    {
-					    	if(data == false) {
-					    		idFind();
+					    {	
+					    	if(result == 0) {
+					    		alert("아이디나 비밀번호가 일치하지 않습니다.");
 					    	}
-		                    else {
-		                    	alert("로그인 성공");
-		                    	location.href = "/board/boardList.do"; // home.do로 돌아가시면 됩니다.
-		                    }	
+					    	else {
+					    		location.href = "/board/boardList.do";
+					    	}
 					    },
 					    error: function (jqXHR, textStatus, errorThrown)
 					    {
