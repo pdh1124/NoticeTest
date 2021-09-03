@@ -3,7 +3,9 @@ package com.spring.board.controller;
 import java.util.HashMap;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.board.HomeController;
 import com.spring.board.service.userService;
@@ -101,6 +104,7 @@ public class UserController {
 	 
 	 
 	@RequestMapping(value="/user/userLoginAction.do", method = RequestMethod.POST)
+	@ResponseBody
 	public void userLoginAction(@RequestParam("userId") String userId,
 			@RequestParam("userPw") String userPw,
 			HttpServletResponse response,
@@ -115,16 +119,36 @@ public class UserController {
 		 
 		 UserVo loginUser = userService.login(userVo);
 		 
+		 System.out.println("loginUser : " + loginUser);
+		 
 		 if(loginUser != null) {
 			 if(userVo.getUserPw().equals(loginUser.getUserPw())) {
-				 System.out.println("비밀번호 일치");
+				 //System.out.println("비밀번호 일치");
 				 model.addAttribute("loginUser", loginUser);
 				 response.getWriter().print(true);
 			 }
 			 else {
-				 System.out.println("비밀번호 불일치");
+				 //System.out.println("비밀번호 불일치");
 				 response.getWriter().print(false);
 			 }
 		 }
+	}
+	 
+	 
+	@RequestMapping(value="/user/loginAction.do", method = RequestMethod.POST)
+	public String loginAction(HttpServletRequest request, UserVo userVo, RedirectAttributes rttr) throws Exception {
+		
+		HttpSession session = request.getSession();
+		UserVo userValue = userService.userLogin(userVo);
+		
+		if(userValue == null) {
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			return "/user/userLogin.do";
+		}
+		
+		session.setAttribute("userVo", userValue);
+		
+		return "/board/boardList.do";
 	}
 }

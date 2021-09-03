@@ -53,10 +53,6 @@ public class UserController {
 		System.out.println("callbackMsg::" + callbackMsg);
 
 		return callbackMsg;
-		
-//		userService.userJoin(userVo);
-//		
-//		return "board/boardList";
 	}
 	
 	 @RequestMapping(value="/user/userIdCheak.do", method = RequestMethod.POST)

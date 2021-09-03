@@ -1,8 +1,0 @@
-package com.spring.board.dao;
-
-import com.spring.board.vo.MemberVo;
-
-public interface MemberDao {
-
-	public int memberJoin(MemberVo memberVo) throws Exception;
-}

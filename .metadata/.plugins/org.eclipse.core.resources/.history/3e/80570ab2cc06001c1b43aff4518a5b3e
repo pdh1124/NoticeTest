@@ -1,8 +1,0 @@
-package com.spring.board.service;
-
-import com.spring.board.vo.MemberVo;
-
-public interface memberService {
-
-	public int memberJoin(MemberVo memberVo) throws Exception;
-}
