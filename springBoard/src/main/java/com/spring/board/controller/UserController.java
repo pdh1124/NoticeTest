@@ -111,11 +111,11 @@ public class UserController {
 		 userVo.setUserId(userId);
 		 userVo.setUserPw(userPw);
 		 
-		 System.out.println("id : " + userId + ", pw :" + userPw);
+		 //System.out.println("id : " + userId + ", pw :" + userPw);
 		 
 		 UserVo loginUser = userService.login(userVo);
 		 
-		 System.out.println("loginUser : " + loginUser);
+		 //System.out.println("loginUser : " + loginUser);
 		 
 		 if(loginUser != null) {
 			 if(userVo.getUserPw().equals(loginUser.getUserPw())) {
