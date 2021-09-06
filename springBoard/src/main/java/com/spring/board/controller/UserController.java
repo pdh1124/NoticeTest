@@ -119,12 +119,12 @@ public class UserController {
 		 
 		 if(loginUser != null) {
 			 if(userVo.getUserPw().equals(loginUser.getUserPw())) {
-				 System.out.println("비밀번호 일치");
+				 //System.out.println("비밀번호 일치");
 				 model.addAttribute("loginUser", loginUser);
 				 response.getWriter().print(true);
 			 }
 			 else {
-				 System.out.println("비밀번호 불일치");
+				 //System.out.println("비밀번호 불일치");
 				 response.getWriter().print(false);
 			 }
 		 }
