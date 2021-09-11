@@ -50,7 +50,7 @@ public class UserController {
 		result.put("success", (resultCnt > 0)?"Y":"N");
 		String callbackMsg = commonUtil.getJsonCallBackString(" ", result);
 		
-		System.out.println("callbackMsg :" + callbackMsg);
+		System.out.println("callbackMsg::" + callbackMsg);
 
 		return callbackMsg;
 	}
